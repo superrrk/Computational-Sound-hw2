@@ -1,0 +1,90 @@
+button {
+    border-radius: 25px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    gap: 10px;
+    text-align: center;
+}
+
+#cat-container {
+    width: 200px;
+    height: 200px;
+    position: relative;
+}
+
+#cat,
+.cat-note {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 24px;
+    height: 24px;
+    background: #000;
+    border-radius: 50% 50% 45% 45%;
+}
+
+#cat::before,
+#cat::after,
+.cat-note::before,
+.cat-note::after {
+    content: "";
+    position: absolute;
+    top: -6px;
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-bottom: 8px solid #000;
+}
+#cat::before { left: 2px; transform: rotate(-10deg); }
+#cat::after { right: 2px; transform: rotate(10deg); }
+.cat-note::before { left: 2px; transform: rotate(-10deg); }
+.cat-note::after { right: 2px; transform: rotate(10deg); }
+
+/* Sine wave: S shape (horizontal motion with vertical oscillation) */
+@keyframes wave-sine {
+    0% { transform: translate(-50%, -50%) translate(-60px, 0); }
+    12.5% { transform: translate(-50%, -50%) translate(-45px, -40px); }
+    25% { transform: translate(-50%, -50%) translate(-30px, 0); }
+    37.5% { transform: translate(-50%, -50%) translate(-15px, 40px); }
+    50% { transform: translate(-50%, -50%) translate(0, 0); }
+    62.5% { transform: translate(-50%, -50%) translate(15px, -40px); }
+    75% { transform: translate(-50%, -50%) translate(30px, 0); }
+    87.5% { transform: translate(-50%, -50%) translate(45px, 40px); }
+    100% { transform: translate(-50%, -50%) translate(60px, 0); }
+}
+
+/* Square wave: rectangular pattern */
+@keyframes wave-square {
+    0% { transform: translate(-50%, -50%) translate(-50px, -50px); }
+    25% { transform: translate(-50%, -50%) translate(50px, -50px); }
+    50% { transform: translate(-50%, -50%) translate(50px, 50px); }
+    75% { transform: translate(-50%, -50%) translate(-50px, 50px); }
+    100% { transform: translate(-50%, -50%) translate(-50px, -50px); }
+}
+
+/* Sawtooth wave: diagonal ramp up, then reset */
+@keyframes wave-sawtooth {
+    0% { transform: translate(-50%, -50%) translate(-60px, 60px); }
+    50% { transform: translate(-50%, -50%) translate(60px, -60px); }
+    51% { transform: translate(-50%, -50%) translate(-60px, 60px); }
+    100% { transform: translate(-50%, -50%) translate(-60px, 60px); }
+}
+
+/* Triangle wave: zigzag pattern */
+@keyframes wave-triangle {
+    0% { transform: translate(-50%, -50%) translate(-60px, 0); }
+    25% { transform: translate(-50%, -50%) translate(-30px, -60px); }
+    50% { transform: translate(-50%, -50%) translate(0, 0); }
+    75% { transform: translate(-50%, -50%) translate(30px, -60px); }
+    100% { transform: translate(-50%, -50%) translate(60px, 0); }
+}
