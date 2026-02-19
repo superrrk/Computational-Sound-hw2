@@ -5,21 +5,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kelly HW1</title>
+    <title>Kelly HW2</title>
 </head>
 
 <body>
-    <p>digital keyboard - the basics for lab 1!</p>
-    <p>more keys = more cats!</p>
-    <div id="cat-container" aria-hidden="true">
-        <div id="cat"></div>
-    </div>
+    <p>lab 2</p>
+    <p>keyboard with additive, AM, and FM synthesis!</p>
     <div id="wave-controls">
         <button type="button" class="wave-btn active" data-wave="sine">Sine</button>
         <button type="button" class="wave-btn" data-wave="square">Square</button>
         <button type="button" class="wave-btn" data-wave="sawtooth">Sawtooth</button>
         <button type="button" class="wave-btn" data-wave="triangle">Triangle</button>
     </div>
+    <div id="note-container" aria-hidden="true"></div>
+
+    <div id="synth-controls">
+        <div id="mode-controls" style="display:flex;gap:8px;align-items:center;">
+          <button type="button" class="mode-btn active" data-mode="additive">Additive</button>
+          <button type="button" class="mode-btn" data-mode="am">AM</button>
+          <button type="button" class="mode-btn" data-mode="fm">FM</button>
+        </div>
+        
+        <label>Partials: <input id="num-partials" type="range" min="1" max="12" value="3"> <span id="num-partials-value">3</span></label>
+        <fieldset id="adsr-controls" style="border:1px solid #ddd;padding:8px;border-radius:6px;">
+          <legend>ADSR Envelope</legend>
+          <label>Attack: <input id="adsr-attack" type="range" min="0.001" max="2" step="0.001" value="0.02"> <span id="adsr-attack-value">0.02</span></label>
+          <label>Decay: <input id="adsr-decay" type="range" min="0" max="2" step="0.001" value="0.10"> <span id="adsr-decay-value">0.10</span></label>
+          <label>Sustain: <input id="adsr-sustain" type="range" min="0" max="1" step="0.01" value="0.5"> <span id="adsr-sustain-value">0.50</span></label>
+          <label>Release: <input id="adsr-release" type="range" min="0" max="3" step="0.01" value="0.15"> <span id="adsr-release-value">0.15</span></label>
+        </fieldset>
+      
+        <div id="am-controls">
+          <label>AM Mod Freq: <input id="mod-freq" type="range" min="0.1" max="50" value="5" step="0.1"> <span id="am-mod-freq-value">5</span></label>
+          <label>AM Depth: <input id="mod-depth-am" type="range" min="0" max="1" step="0.01" value="0.4"> <span id="am-depth-value">0.40</span></label>
+        </div>
+        <div id="fm-controls">
+          <label>FM Mod Freq: <input id="fm-mod-freq" type="range" min="0.1" max="2000" value="220" step="0.1"> <span id="fm-mod-freq-value">220</span></label>
+          <label>FM Index: <input id="fm-index" type="range" min="0" max="1000" value="100" step="1"> <span id="fm-index-value">100</span></label>
+          <div id="fm-warning" style="color:#b91c1c;font-size:12px;height:16px;margin-top:4px;"></div>
+        </div>
+        <fieldset id="lfo-controls" style="border:1px solid #ddd;padding:8px;border-radius:6px;">
+          <legend>LFO (per-voice)</legend>
+          <label><input id="lfo-enable" type="checkbox" checked> Enable LFO</label>
+          <label>LFO Rate: <input id="lfo-rate" type="range" min="0.1" max="20" value="5" step="0.1"> <span id="lfo-rate-value">5 Hz</span></label>
+          <label>LFO Depth: <input id="lfo-depth" type="range" min="0" max="1" value="0.3" step="0.01"> <span id="lfo-depth-value">0.30</span></label>
+        </fieldset>
+      
+        <!-- <fieldset>
+          <legend>ADSR</legend>
+          <label>A <input id="adsr-attack" type="range" min="0.001" max="2" step="0.001" value="0.02"></label>
+          <label>D <input id="adsr-decay" type="range" min="0" max="2" step="0.001" value="0.10"></label>
+          <label>S <input id="adsr-sustain" type="range" min="0" max="1" step="0.01" value="0.5"></label>
+          <label>R <input id="adsr-release" type="range" min="0" max="3" step="0.01" value="0.15"></label>
+        </fieldset>
+      
+        <label>LFO Rate: <input id="lfo-rate" type="range" min="0.1" max="20" value="5"></label>
+        <label>LFO Depth: <input id="lfo-depth" type="range" min="0" max="1" step="0.01" value="0"></label> -->
+      </div>
 </body>
 
 <script src="main.js"></script>
